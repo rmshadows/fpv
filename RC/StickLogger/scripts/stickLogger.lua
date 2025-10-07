@@ -1,9 +1,10 @@
-local logFilePath = ""
-local lastTime = 0
+local logFilePath = ""  -- 文件名
+local lastTime = 0      -- 上次记录的时间
 local interval = 33.33  -- 记录间隔 (毫秒)  相当于30帧
+local restTime = 300    -- 休息时间，如果disarm超过这么多毫秒，就另启新log文件记录摇杆日志
 
 -- 初始化日志文件（以追加方式打开）
-local function init()
+local function makeNewFile()
     local date = getDateTime()
     logFilePath = string.format("/SCRIPTS/FUNCTIONS/stk_%04d%02d%02d_%02d%02d%02d.log", date.year, date.mon, date.day, date.hour, date.min, date.sec)
 
@@ -17,10 +18,18 @@ local function init()
     return true
 end
 
+-- 该Model初加载时执行一次
+local function init()
+end
+
 -- 主循环，每帧调用
 local function run()
     local now = getTime() * 10  -- getTime() 返回0.01s为单位
-    if now - lastTime >= interval then
+    if now - lastTime >= restTime then
+        lastTime = now
+
+        makeNewFile()
+    elseif now - lastTime >= interval then
         lastTime = now
 
         local ch1 = getValue("ch1")
