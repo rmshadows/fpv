@@ -1,12 +1,15 @@
-local logFilePath = "/SCRIPTS/FUNCTIONS/test.log"
+local logFilePath = ""
 local lastTime = 0
 local interval = 33.33  -- 记录间隔 (毫秒)  相当于30帧
 
 -- 初始化日志文件（以追加方式打开）
 local function init()
+    local date = getDateTime()
+    logFilePath = string.format("/SCRIPTS/FUNCTIONS/stk_%04d%02d%02d_%02d%02d%02d.log", date.year, date.mon, date.day, date.hour, date.min, date.sec)
+
     local file = io.open(logFilePath, "a")
     if file then
-        io.write(file, "\nAil,Ele,Thr,Rud\n")
+        io.write(file, "Ail,Ele,Thr,Rud,Time\n")
         io.close(file)
     else
         return false
@@ -27,7 +30,11 @@ local function run()
 
         local file = io.open(logFilePath, "a")
         if file then
-            io.write(file, string.format("%d,%d,%d,%d\n", ch1, ch2, ch3, ch4))
+            -- 获取当前时间
+            local time = getDateTime()
+            local timeHHMMSS = string.format("%02d:%02d:%02d", time.hour, time.min, time.sec) -- 格式如 15:23:59
+
+            io.write(file, string.format("%d,%d,%d,%d,%s\n", ch1, ch2, ch3, ch4, timeHHMMSS))
             io.close(file)
         end
     end
