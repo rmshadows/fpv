@@ -1,13 +1,12 @@
-local logFilePath = "/SCRIPTS/FUNCTIONS/test.txt"
+local logFilePath = "/SCRIPTS/FUNCTIONS/test.log"
 local lastTime = 0
-local interval = 100  -- 记录间隔 (毫秒) = 0.1秒
+local interval = 33.33  -- 记录间隔 (毫秒)  相当于30帧
 
 -- 初始化日志文件（以追加方式打开）
 local function init()
     local file = io.open(logFilePath, "a")
     if file then
-        io.write(file, "\n--- Stick Log Started ---\n")
-        io.write(file, "Time(ms),CH1,CH2,CH3,CH4\n")
+        io.write(file, "\nAil,Ele,Thr,Rud\n")
         io.close(file)
     else
         return false
@@ -28,15 +27,11 @@ local function run()
 
         local file = io.open(logFilePath, "a")
         if file then
-            io.write(file, string.format("%d,%d,%d,%d,%d\n", now, ch1, ch2, ch3, ch4))
+            io.write(file, string.format("%d,%d,%d,%d\n", ch1, ch2, ch3, ch4))
             io.close(file)
         end
     end
     return 0
-end
-
-local function init()
-    initLog()
 end
 
 return { run = run, init = init }
