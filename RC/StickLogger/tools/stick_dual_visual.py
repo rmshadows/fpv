@@ -4,14 +4,19 @@ import cv2
 from tqdm import tqdm
 
 # =======================
-# 配置
+# 🔧 配置区（自由调整）
 input_file = "stick_log.log"       # log 文件路径
 output_video = "stick_dual_cross2.mp4"    # 输出视频
 width, height = 1200, 600          # 视频分辨率
 fps = 30                           # 帧率
-dot_radius = 4                     # 圆点半径
-trail_length = 60                  # 轨迹保留帧数
+dot_radius = 6                     # 圆点半径
+trail_length = 8                 # 轨迹保留帧数
 cross_color = (60, 60, 60)         # 十字线颜色
+
+# 🎨 轨迹样式配置
+trail_color_start = (0, 0, 0)         # 轨迹起始颜色（B, G, R）
+trail_color_end = (0, 0, 255)          # 轨迹末端颜色（B, G, R）
+trail_thickness = 3                    # 轨迹线条粗细
 # =======================
 
 # 读取数据
@@ -59,13 +64,15 @@ for _, row in tqdm(df.iterrows(), total=len(df)):
         trail_left.pop(0)
         trail_right.pop(0)
 
-    # 绘制轨迹线（红色渐变）
+    # 绘制轨迹线（根据配置颜色渐变）
     for i in range(1, len(trail_left)):
         alpha = i / len(trail_left)
-        red = int(50 + 205 * alpha)  # 渐变红
-        color = (0, 0, red)
-        cv2.line(frame, trail_left[i - 1], trail_left[i], color, 1)
-        cv2.line(frame, trail_right[i - 1], trail_right[i], color, 1)
+        color = tuple([
+            int(trail_color_start[c] + (trail_color_end[c] - trail_color_start[c]) * alpha)
+            for c in range(3)
+        ])
+        cv2.line(frame, trail_left[i - 1], trail_left[i], color, trail_thickness)
+        cv2.line(frame, trail_right[i - 1], trail_right[i], color, trail_thickness)
 
     # 绘制当前摇杆位置（白色小圆点）
     cv2.circle(frame, pos_left, dot_radius, (255, 255, 255), -1)
