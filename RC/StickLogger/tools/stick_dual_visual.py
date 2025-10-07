@@ -5,9 +5,9 @@ from tqdm import tqdm
 
 # =======================
 # 配置
-input_file = "stick_log.csv"       # CSV 文件路径
+input_file = "stick_log.log"       # log 文件路径
 output_video = "stick_dual_cross2.mp4"    # 输出视频
-width, height = 1200, 600           # 视频分辨率
+width, height = 1200, 600          # 视频分辨率
 fps = 30                           # 帧率
 dot_radius = 4                     # 圆点半径
 trail_length = 60                  # 轨迹保留帧数
@@ -15,7 +15,7 @@ cross_color = (60, 60, 60)         # 十字线颜色
 # =======================
 
 # 读取数据
-df = pd.read_csv(input_file)
+df = pd.read_csv(input_file, comment="#")  # 支持带表头的log文件
 df = df.dropna(subset=["Ail", "Ele", "Thr", "Rud"])
 
 # 映射函数
@@ -59,7 +59,7 @@ for _, row in tqdm(df.iterrows(), total=len(df)):
         trail_left.pop(0)
         trail_right.pop(0)
 
-    # 绘制轨迹线（灰色渐变，新亮旧暗）
+    # 绘制轨迹线（红色渐变）
     for i in range(1, len(trail_left)):
         alpha = i / len(trail_left)
         red = int(50 + 205 * alpha)  # 渐变红
@@ -67,7 +67,7 @@ for _, row in tqdm(df.iterrows(), total=len(df)):
         cv2.line(frame, trail_left[i - 1], trail_left[i], color, 1)
         cv2.line(frame, trail_right[i - 1], trail_right[i], color, 1)
 
-    # 绘制摇杆点（白色）
+    # 绘制当前摇杆位置（白色小圆点）
     cv2.circle(frame, pos_left, dot_radius, (255, 255, 255), -1)
     cv2.circle(frame, pos_right, dot_radius, (255, 255, 255), -1)
 
