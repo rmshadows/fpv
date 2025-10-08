@@ -99,12 +99,23 @@ for idx in tqdm(new_indices, desc="Rendering"):
     frame = np.zeros((height, width, 3), dtype=np.uint8)
 
     # 🎯 绘制固定边框（底层保证边界存在）
-    cv2.rectangle(frame, (LEFT_BOX_X, LEFT_BOX_Y),
-                  (LEFT_BOX_X + LEFT_BOX_W, LEFT_BOX_Y + LEFT_BOX_H),
-                  BOX_COLOR, BOX_THICKNESS)
-    cv2.rectangle(frame, (RIGHT_BOX_X, RIGHT_BOX_Y),
-                  (RIGHT_BOX_X + RIGHT_BOX_W, RIGHT_BOX_Y + RIGHT_BOX_H),
-                  BOX_COLOR, BOX_THICKNESS)
+    half_t = BOX_THICKNESS // 2
+    ## 左边框（右边退半线宽，避免中线重叠）
+    cv2.rectangle(
+        frame,
+        (LEFT_BOX_X + half_t, LEFT_BOX_Y + half_t),
+        (LEFT_BOX_X + LEFT_BOX_W - half_t, LEFT_BOX_Y + LEFT_BOX_H - half_t),
+        BOX_COLOR,
+        BOX_THICKNESS
+    )
+    ## 右边框（左边退半线宽，右边也收回半线宽避免被裁掉）
+    cv2.rectangle(
+        frame,
+        (RIGHT_BOX_X + half_t, RIGHT_BOX_Y + half_t),
+        (RIGHT_BOX_X + RIGHT_BOX_W - half_t, RIGHT_BOX_Y + RIGHT_BOX_H - half_t),
+        BOX_COLOR,
+        BOX_THICKNESS
+    )
 
     # 🎨 可选渐变（仅在边框内部，不覆盖边界）
     if ENABLE_BOX_GRADIENT:
