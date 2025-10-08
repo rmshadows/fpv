@@ -44,6 +44,7 @@ RIGHT_BOX_X, RIGHT_BOX_Y = width // 2, 0
 RIGHT_BOX_W, RIGHT_BOX_H = width // 2, height
 BOX_COLOR = (100, 100, 100)  # 边框颜色
 CROSS_THICKNESS = 1          # 十字架的粗细
+BOX_THICKNESS = 4            # 边框线粗细，推荐小于10的偶数，建议4
 
 # 🔲 可选功能：边框内部渐变（不会覆盖边界）
 ENABLE_BOX_GRADIENT = True  # False 关闭，True 开启
