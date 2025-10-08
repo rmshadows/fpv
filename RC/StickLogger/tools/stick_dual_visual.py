@@ -43,7 +43,7 @@ LEFT_BOX_W, LEFT_BOX_H = width // 2, height
 RIGHT_BOX_X, RIGHT_BOX_Y = width // 2, 0
 RIGHT_BOX_W, RIGHT_BOX_H = width // 2, height
 BOX_COLOR = (100, 100, 100)  # 边框颜色
-BOX_THICKNESS = 4            # 边框线粗细，推荐小于10的偶数，建议4
+CROSS_THICKNESS = 1          # 十字架的粗细
 
 # 🔲 可选功能：边框内部渐变（不会覆盖边界）
 ENABLE_BOX_GRADIENT = True  # False 关闭，True 开启
@@ -162,8 +162,8 @@ for idx in tqdm(new_indices, desc="Rendering"):
     mid_x_right = 3 * width // 4
     mid_y = height // 2
     for x_center in [mid_x_left, mid_x_right]:
-        cv2.line(frame, (x_center, 0), (x_center, height), cross_color, 1)
-        cv2.line(frame, (x_center - width // 4, mid_y), (x_center + width // 4, mid_y), cross_color, 1)
+        cv2.line(frame, (x_center, 0), (x_center, height), cross_color, CROSS_THICKNESS)
+        cv2.line(frame, (x_center - width // 4, mid_y), (x_center + width // 4, mid_y), cross_color, CROSS_THICKNESS)
 
     # 轨迹更新（保留 trail_length 帧）
     trail_left.append(pos_left)
