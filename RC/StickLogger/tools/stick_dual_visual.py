@@ -43,11 +43,12 @@ LEFT_BOX_W, LEFT_BOX_H = width // 2, height
 RIGHT_BOX_X, RIGHT_BOX_Y = width // 2, 0
 RIGHT_BOX_W, RIGHT_BOX_H = width // 2, height
 BOX_COLOR = (100, 100, 100)  # 边框颜色
-BOX_THICKNESS = 2            # 边框线粗细
+BOX_THICKNESS = 4            # 边框线粗细，推荐小于10的偶数，建议4
 
 # 🔲 可选功能：边框内部渐变（不会覆盖边界）
 ENABLE_BOX_GRADIENT = True  # False 关闭，True 开启
 GRADIENT_MARGIN = 50         # 离边框多少像素开始渐变
+BOX_THICKNESS_HIGHLIGHT = 2  # 高亮边框线粗细，推荐小于7的偶数或1，建议2
 # =======================
 
 # 🧩 参数解析
@@ -100,19 +101,36 @@ for idx in tqdm(new_indices, desc="Rendering"):
 
     # 🎯 绘制固定边框（底层保证边界存在）
     half_t = BOX_THICKNESS // 2
-    ## 左边框（右边退半线宽，避免中线重叠）
+    half_t_h = BOX_THICKNESS_HIGHLIGHT // 2
+    # ## 左边框（右边退半线宽，避免中线重叠）
+    # cv2.rectangle(
+    #     frame,
+    #     (LEFT_BOX_X + half_t, LEFT_BOX_Y + half_t),
+    #     (LEFT_BOX_X + LEFT_BOX_W - half_t, LEFT_BOX_Y + LEFT_BOX_H - half_t),
+    #     BOX_COLOR,
+    #     BOX_THICKNESS
+    # )
+    # ## 右边框（左边退半线宽，右边也收回半线宽避免被裁掉）
+    # cv2.rectangle(
+    #     frame,
+    #     (RIGHT_BOX_X + half_t, RIGHT_BOX_Y + half_t),
+    #     (RIGHT_BOX_X + RIGHT_BOX_W - half_t, RIGHT_BOX_Y + RIGHT_BOX_H - half_t),
+    #     BOX_COLOR,
+    #     BOX_THICKNESS
+    # )
+    ## 总边框
     cv2.rectangle(
         frame,
-        (LEFT_BOX_X + half_t, LEFT_BOX_Y + half_t),
-        (LEFT_BOX_X + LEFT_BOX_W - half_t, LEFT_BOX_Y + LEFT_BOX_H - half_t),
+        (half_t, half_t),
+        (width - half_t - 1, height - half_t - 1),
         BOX_COLOR,
         BOX_THICKNESS
     )
-    ## 右边框（左边退半线宽，右边也收回半线宽避免被裁掉）
+    ## 中间竖线
     cv2.rectangle(
         frame,
-        (RIGHT_BOX_X + half_t, RIGHT_BOX_Y + half_t),
-        (RIGHT_BOX_X + RIGHT_BOX_W - half_t, RIGHT_BOX_Y + RIGHT_BOX_H - half_t),
+        (width // 2, half_t),
+        (width // 2, height - half_t),
         BOX_COLOR,
         BOX_THICKNESS
     )
@@ -125,9 +143,9 @@ for idx in tqdm(new_indices, desc="Rendering"):
         dist = min(dx, dy)
         intensity = int(255 * max(0, (GRADIENT_MARGIN - dist) / GRADIENT_MARGIN))
         cv2.rectangle(frame,
-                      (LEFT_BOX_X + BOX_THICKNESS, LEFT_BOX_Y + BOX_THICKNESS),
-                      (LEFT_BOX_X + LEFT_BOX_W - BOX_THICKNESS, LEFT_BOX_Y + LEFT_BOX_H - BOX_THICKNESS),
-                      (intensity, intensity, intensity), 1)
+                      (LEFT_BOX_X + BOX_THICKNESS + half_t_h + 1, LEFT_BOX_Y + BOX_THICKNESS + half_t_h + 1),
+                      (LEFT_BOX_X + LEFT_BOX_W - half_t - half_t_h - 1, LEFT_BOX_Y + LEFT_BOX_H - BOX_THICKNESS - half_t_h - 2),
+                      (intensity, intensity, intensity), BOX_THICKNESS_HIGHLIGHT)
 
         # 右摇杆渐变
         dx = min(pos_right[0] - RIGHT_BOX_X, RIGHT_BOX_X + RIGHT_BOX_W - pos_right[0])
@@ -135,9 +153,9 @@ for idx in tqdm(new_indices, desc="Rendering"):
         dist = min(dx, dy)
         intensity = int(255 * max(0, (GRADIENT_MARGIN - dist) / GRADIENT_MARGIN))
         cv2.rectangle(frame,
-                      (RIGHT_BOX_X + BOX_THICKNESS, RIGHT_BOX_Y + BOX_THICKNESS),
-                      (RIGHT_BOX_X + RIGHT_BOX_W - BOX_THICKNESS, RIGHT_BOX_Y + RIGHT_BOX_H - BOX_THICKNESS),
-                      (intensity, intensity, intensity), 1)
+                      (RIGHT_BOX_X + half_t + half_t_h + 1, RIGHT_BOX_Y + BOX_THICKNESS + half_t_h + 1),
+                      (RIGHT_BOX_X + RIGHT_BOX_W - BOX_THICKNESS - half_t_h - 2, RIGHT_BOX_Y + RIGHT_BOX_H - BOX_THICKNESS - half_t_h - 2),
+                      (intensity, intensity, intensity), BOX_THICKNESS_HIGHLIGHT)
 
     # 十字线绘制
     mid_x_left = width // 4
