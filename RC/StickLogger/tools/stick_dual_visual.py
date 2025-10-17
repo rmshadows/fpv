@@ -30,12 +30,12 @@ DEFAULT_INPUT = "1.log"   # 默认输入log文件
 DEFAULT_SPEED = 1.0        # 默认视频速度倍率
 width, height = 1200, 600  # 视频分辨率
 fps = 30                   # 固定帧率（不变）
-dot_radius = 12            # 圆点半径
+dot_radius = 18            # 圆点半径
 trail_length = 8           # 轨迹保留帧数
 cross_color = (60, 60, 60) # 十字线颜色
 trail_color_start = (0, 0, 0)  # 轨迹起始颜色（BGR）
 trail_color_end = (0, 0, 255)  # 轨迹末端颜色（BGR）
-trail_thickness = 14        # 轨迹线条粗细
+trail_thickness = 30        # 轨迹线条粗细
 
 # 🔲 摇杆边框配置（左上角坐标 + 宽高）
 LEFT_BOX_X, LEFT_BOX_Y = 0, 0
@@ -43,7 +43,7 @@ LEFT_BOX_W, LEFT_BOX_H = width // 2, height
 RIGHT_BOX_X, RIGHT_BOX_Y = width // 2, 0
 RIGHT_BOX_W, RIGHT_BOX_H = width // 2, height
 BOX_COLOR = (100, 100, 100)  # 边框颜色
-CROSS_THICKNESS = 1          # 十字架的粗细
+CROSS_THICKNESS = 2          # 十字架的粗细
 BOX_THICKNESS = 4            # 边框线粗细，推荐小于10的偶数，建议4
 
 # 🔲 可选功能：边框内部渐变（不会覆盖边界）
