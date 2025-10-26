@@ -30,3 +30,17 @@ python stick_dual_visual.py
 ✅ 双摇杆视频（含十字准线+渐变轨迹）生成完毕: stick_20250101_173000.mp4
 ```
 即可获得视频
+
+## 二，batch_visualize.py
+
+### 1 简介
+
+ - 这个py脚本名，是自动识别同文件夹里的所有.log格式文件，自动用上一个脚本stick_dual_visual.py 批量生成视频
+
+### 2 使用方法
+
+将这个脚本，和上面的脚本stick_dual_visual.py，以及要转化的.log文件放在一起，直接运行
+
+```bash
+python batch_visualize.py
+```
