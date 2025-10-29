@@ -6,7 +6,7 @@ local restTime = 300    -- 休息时间，如果disarm超过这么多毫秒，�
 -- 新增日志文件
 local function makeNewFile()
     local date = getDateTime()
-    logFilePath = string.format("/SCRIPTS/FUNCTIONS/stk_%04d%02d%02d_%02d%02d%02d.log", date.year, date.mon, date.day, date.hour, date.min, date.sec)
+    logFilePath = string.format("/LOGS/stk_%04d%02d%02d_%02d%02d%02d.log", date.year, date.mon, date.day, date.hour, date.min, date.sec)
 
     local file = io.open(logFilePath, "a")
     if file then
