@@ -1,0 +1,238 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F411 (S411) 4.4.2 Jun  1 2023 / 02:20:34 (23d066d08) MSP API: 1.45
+
+# config: YES
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name CRAZYBEEF4SX1280
+manufacturer_id HAMO
+mcu_id 003a00453034510833393331
+signature 
+
+# name: MOBULA_8
+
+# resources
+resource LED_STRIP 1 NONE
+
+# feature
+feature -RX_SERIAL
+feature -SOFTSERIAL
+feature -AIRMODE
+feature RX_SPI
+
+# serial
+serial 1 2048 115200 57600 0 115200
+
+# beacon
+beacon RX_LOST
+beacon RX_SET
+
+# aux
+aux 0 0 0 1800 2100 0 0
+aux 1 1 1 900 1200 0 0
+aux 2 6 3 1700 2100 1 0
+aux 3 6 2 900 1300 1 0
+aux 4 27 2 1700 2100 1 0
+aux 5 27 3 1700 2100 1 0
+aux 6 7 5 1700 2100 1 0
+aux 7 7 0 900 900 1 6
+aux 8 13 5 1700 2100 1 0
+aux 9 13 3 900 1300 1 0
+aux 10 19 1 1325 1725 0 0
+aux 11 28 6 1700 2100 0 0
+aux 12 35 3 1350 1650 1 0
+aux 13 35 2 900 1300 1 0
+aux 14 36 4 1700 2100 0 0
+aux 15 39 6 1300 1700 1 0
+aux 16 39 7 1300 1700 1 0
+
+# adjrange
+adjrange 0 0 2 900 1200 12 2 0 0
+adjrange 1 0 2 1200 1800 12 2 0 0
+adjrange 2 0 2 1800 2100 12 2 0 0
+
+# vtxtable
+vtxtable bands 6
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B FACTORY 5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665 5645 5885 5905 5925 5945
+vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable band 6 LOWRACE  L FACTORY 5333 5373 5413 5453 5493 5533 5573 5613
+vtxtable powerlevels 6
+vtxtable powervalues 10 14 20 26 26 2
+vtxtable powerlabels 0 25 100 400 400 RCE
+
+# rxfail
+rxfail 3 s 1300
+
+# master
+set gyro_lpf1_static_hz = 0
+set gyro_lpf2_static_hz = 0
+set dyn_notch_min_hz = 150
+set gyro_lpf1_dyn_min_hz = 300
+set gyro_lpf1_dyn_max_hz = 550
+set acc_lpf_hz = 10
+set acc_trim_pitch = 11
+set acc_calibration = -32,-46,-1,1
+set fpv_mix_degrees = 30
+set serialrx_provider = SPEK1024
+set blackbox_device = SERIAL
+set dshot_idle_value = 1200
+set dshot_bitbang = AUTO
+set motor_pwm_protocol = DSHOT300
+set motor_poles = 12
+set bat_capacity = 180
+set vbat_max_cell_voltage = 450
+set ibata_scale = 470
+set beeper_dshot_beacon_tone = 3
+set yaw_motors_reversed = ON
+set small_angle = 180
+set gps_rescue_min_start_dist = 30
+set gps_rescue_ascend_rate = 500
+set gps_rescue_ground_speed = 500
+set gps_rescue_descend_rate = 100
+set gps_rescue_throttle_max = 1600
+set gps_rescue_throttle_d = 15
+set gps_rescue_velocity_i = 30
+set gps_rescue_velocity_d = 20
+set deadband = 1
+set yaw_deadband = 1
+set runaway_takeoff_prevention = OFF
+set simplified_gyro_filter = OFF
+set osd_warn_bitmask = 24575
+set osd_vbat_pos = 6497
+set osd_rssi_pos = 6177
+set osd_link_quality_pos = 6337
+set osd_link_tx_power_pos = 6551
+set osd_rssi_dbm_pos = 6305
+set osd_rsnr_pos = 65
+set osd_tim_2_pos = 6465
+set osd_flymode_pos = 6201
+set osd_throttle_pos = 6521
+set osd_vtx_channel_pos = 6541
+set osd_crosshairs_pos = 6349
+set osd_ah_sbar_pos = 6350
+set osd_ah_pos = 6222
+set osd_current_pos = 4439
+set osd_mah_drawn_pos = 2407
+set osd_craft_name_pos = 395
+set osd_compass_bar_pos = 394
+set osd_pidrate_profile_pos = 2421
+set osd_warnings_pos = 2281
+set osd_avg_cell_voltage_pos = 6359
+set osd_pit_ang_pos = 4144
+set osd_rol_ang_pos = 4151
+set osd_battery_usage_pos = 6528
+set osd_disarmed_pos = 6315
+set osd_up_down_reference_pos = 4334
+set osd_esc_rpm_pos = 161
+set osd_core_temp_pos = 6327
+set osd_stick_overlay_left_pos = 2083
+set osd_stick_overlay_right_pos = 2099
+set osd_rate_profile_name_pos = 6510
+set osd_sys_bitrate_pos = 261
+set osd_sys_vtx_temp_pos = 266
+set osd_stat_bitmask = 8418084
+set osd_canvas_width = 30
+set osd_canvas_height = 13
+set debug_mode = RX_EXPRESSLRS_SPI
+set vtx_band = 3
+set vtx_channel = 8
+set vtx_power = 4
+set vtx_low_power_disarm = ON
+set vtx_freq = 5945
+set pinio_box = 255,255,255,255
+set expresslrs_uid = 0,0,0,181,62,36
+set expresslrs_rate_index = 1
+set craft_name = MOBULA_8
+set pilot_name = Ryan Yim
+
+profile 0
+
+# profile 0
+set profile_name = M8
+set dterm_lpf1_static_hz = 0
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 20
+set yaw_lowpass_hz = 0
+set p_pitch = 80
+set i_pitch = 25
+set d_pitch = 80
+set f_pitch = 100
+set p_roll = 80
+set i_roll = 25
+set d_roll = 80
+set f_roll = 100
+set p_yaw = 90
+set i_yaw = 90
+set f_yaw = 100
+set d_max_advance = 0
+set feedforward_jitter_factor = 5
+set feedforward_boost = 18
+set feedforward_max_rate_limit = 95
+set simplified_pids_mode = OFF
+set simplified_master_multiplier = 145
+set simplified_i_gain = 65
+set simplified_d_gain = 185
+set simplified_pi_gain = 190
+set simplified_dmax_gain = 0
+set simplified_feedforward_gain = 130
+set simplified_pitch_d_gain = 85
+set simplified_pitch_pi_gain = 90
+set tpa_mode = PD
+
+profile 1
+
+# profile 1
+set profile_name = Default
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = 7-67
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = 2-31
+set roll_rc_rate = 2
+set pitch_rc_rate = 2
+set yaw_rc_rate = 2
+set roll_srate = 31
+set pitch_srate = 31
+set yaw_srate = 31
+
+rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = 20-67
+set roll_rc_rate = 20
+set pitch_rc_rate = 20
+set yaw_rc_rate = 20
+set roll_expo = 57
+set pitch_expo = 57
+set yaw_expo = 57
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration

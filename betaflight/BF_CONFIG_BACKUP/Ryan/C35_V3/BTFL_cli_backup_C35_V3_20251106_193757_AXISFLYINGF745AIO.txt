@@ -1,0 +1,252 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F745 (F745) 2025.12.0-RC1 Oct 15 2025 / 14:23:17 (ae6b7a275) MSP API: 1.47
+# config rev: 247ea10
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name AXISFLYINGF745AIO
+manufacturer_id AXFL
+mcu_id 002a00323134510332383437
+signature 
+
+# name: C35_V3
+
+# feature
+feature -AIRMODE
+feature GPS
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+feature ESC_SENSOR
+
+# serial
+serial UART1 131073 115200 57600 0 115200
+serial UART2 64 115200 57600 0 115200
+serial UART3 2 115200 115200 0 115200
+
+# beacon
+beacon RX_SET
+
+# led
+led 0 0,0::CB:6
+led 1 1,0::CB:6
+led 2 2,0::CB:6
+led 3 3,0::CB:6
+led 4 4,0::CB:6
+led 5 5,0::CB:6
+led 6 6,0::CB:6
+led 7 7,0::CB:6
+led 8 8,0::CB:6
+led 9 9,0::CB:6
+led 10 10,0::CB:6
+led 11 11,0::CB:6
+led 12 12,0::CB:6
+led 13 13,0::CB:6
+led 14 14,0::CB:6
+led 15 15,0::CB:6
+led 16 0,1::CB:6
+led 17 1,1::CB:6
+led 18 2,1::CB:6
+led 19 3,1::CB:6
+led 20 4,1::CB:6
+led 21 5,1::CB:6
+led 22 6,1::CB:6
+led 23 7,1::CB:6
+led 24 8,1::CB:6
+led 25 9,1::CB:6
+led 26 10,1::CB:6
+led 27 11,1::CB:6
+led 28 12,1::CB:6
+led 29 13,1::CB:6
+led 30 14,1::CB:6
+led 31 15,1::CB:6
+
+# aux
+aux 0 0 0 1700 2100 0 0
+aux 1 1 1 900 1300 0 0
+aux 2 3 3 1300 1700 1 0
+aux 3 3 2 1700 2100 1 0
+aux 4 6 3 1700 2100 1 0
+aux 5 6 2 900 1300 1 0
+aux 6 11 7 1700 2100 1 0
+aux 7 11 0 900 900 1 3
+aux 8 46 3 1700 2100 1 0
+aux 9 46 2 1700 2100 1 0
+aux 10 7 5 1700 2100 1 0
+aux 11 7 0 900 900 1 6
+aux 12 13 5 1700 2100 1 0
+aux 13 13 3 900 1300 1 0
+aux 14 19 1 1300 1700 0 0
+aux 15 28 6 1500 2100 0 0
+aux 16 35 2 900 1300 1 0
+aux 17 35 3 1300 1700 1 0
+aux 18 36 4 1700 2100 1 0
+aux 19 40 1 1300 1700 0 0
+
+# adjrange
+adjrange 0 0 2 900 1200 12 2 0 0
+adjrange 1 0 2 1350 1625 12 2 0 0
+adjrange 2 0 2 1800 2100 12 2 0 0
+
+# rxfail
+rxfail 3 s 1475
+
+# master
+set gyro_lpf1_static_hz = 0
+set gyro_lpf2_static_hz = 700
+set gyro_notch1_hz = 85
+set gyro_notch1_cutoff = 80
+set dyn_notch_count = 1
+set dyn_notch_q = 500
+set dyn_notch_min_hz = 120
+set gyro_lpf1_dyn_min_hz = 0
+set gyro_lpf1_dyn_max_hz = 700
+set acc_calibration = -86,20,-25,1
+set mag_hardware = NONE
+set fpv_mix_degrees = 30
+set dshot_bidir = ON
+set motor_output_reordering = 2,3,0,1,4,5,6,7
+set failsafe_procedure = GPS-RESCUE
+set align_board_roll = 180
+set bat_capacity = 600
+set vbat_max_cell_voltage = 450
+set small_angle = 180
+set gps_sbas_mode = AUTO
+set gps_ublox_use_galileo = ON
+set gps_set_home_point_once = ON
+set gps_rescue_return_alt = 120
+set gps_rescue_min_sats = 5
+set gps_rescue_allow_arming_without_fix = ON
+set pos_hold_without_mag = ON
+set pid_process_denom = 2
+set simplified_gyro_filter_multiplier = 140
+set ledstrip_rainbow_freq = 1
+set osd_alt_alarm = 120
+set osd_vbat_pos = 2625
+set osd_link_quality_pos = 2305
+set osd_link_tx_power_pos = 3145
+set osd_rssi_dbm_pos = 2337
+set osd_tim_2_pos = 2081
+set osd_flymode_pos = 2113
+set osd_throttle_pos = 2684
+set osd_ah_pos = 2233
+set osd_mah_drawn_pos = 2593
+set osd_gps_speed_pos = 2120
+set osd_gps_lon_pos = 2091
+set osd_gps_lat_pos = 2106
+set osd_gps_sats_pos = 2129
+set osd_home_dir_pos = 2138
+set osd_home_dist_pos = 3136
+set osd_altitude_pos = 2646
+set osd_pidrate_profile_pos = 2678
+set osd_warnings_pos = 14516
+set osd_avg_cell_voltage_pos = 2631
+set osd_battery_usage_pos = 2656
+set osd_disarmed_pos = 2261
+set osd_nvario_pos = 2638
+set osd_core_temp_pos = 3112
+set osd_stick_overlay_left_pos = 2449
+set osd_stick_overlay_right_pos = 2458
+set osd_rate_profile_name_pos = 2670
+set osd_stat_bitmask = 132748
+set debug_mode = GYRO_FILTERED
+set craft_name = C35_V3
+set pilot_name = Ryan Yim
+set ap_hover_throttle = 1470
+
+profile 0
+
+# profile 0
+set profile_name = C35V3
+set dterm_lpf1_dyn_min_hz = 86
+set dterm_lpf1_dyn_max_hz = 172
+set dterm_lpf1_static_hz = 86
+set dterm_lpf2_static_hz = 0
+set vbat_sag_compensation = 100
+set anti_gravity_gain = 100
+set iterm_rotation = ON
+set throttle_boost = 0
+set p_pitch = 78
+set i_pitch = 130
+set d_pitch = 89
+set f_pitch = 150
+set p_roll = 84
+set i_roll = 180
+set d_roll = 67
+set f_roll = 145
+set p_yaw = 70
+set i_yaw = 160
+set f_yaw = 140
+set d_max_roll = 123
+set d_max_pitch = 116
+set thrust_linear = 40
+set feedforward_averaging = 3_POINT
+set feedforward_smooth_factor = 25
+set feedforward_jitter_factor = 15
+set dyn_idle_min_rpm = 40
+set simplified_pids_mode = OFF
+set simplified_dterm_filter_multiplier = 115
+
+profile 1
+
+# profile 1
+set profile_name = default
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = 7-67
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = 2-35
+set roll_rc_rate = 2
+set pitch_rc_rate = 2
+set yaw_rc_rate = 2
+set roll_srate = 35
+set pitch_srate = 35
+set yaw_srate = 35
+
+rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = 20-67
+set roll_rc_rate = 20
+set pitch_rc_rate = 20
+set yaw_rc_rate = 20
+set roll_expo = 57
+set pitch_expo = 57
+set yaw_expo = 57
+
+rateprofile 3
+
+# rateprofile 3
+set rateprofile_name = C35V3
+set thr_hover = 0
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 75
+set pitch_rc_rate = 75
+set yaw_rc_rate = 75
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 65
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
