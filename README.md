@@ -5,6 +5,9 @@
 
 ## 更新日志
 
+- 2025年11月19日
+  - 更新README（常用调参站）
+
 - 2025年10月7日
   - 初始化仓库
 
@@ -21,3 +24,16 @@
 - [【图解】《民用无人驾驶航空器运行安全管理规则》（CCAR-92部）解读](https://www.mot.gov.cn/2024zhengcejd/202401/t20240105_3980747.html)
 - [240101-国令第761号-无人驾驶航空器飞行管理暂行条例_20230531](https://www.gov.cn/zhengce/content/202306/content_6888799.htm)
 - [司法部、国家空中交通管理委员会办公室负责人就《无人驾驶航空器飞行管理暂行条例》答记者问](https://www.gov.cn/zhengce/202306/content_6888933.htm)
+
+## FPV常用调参网站
+
+1. [Betaflight App](https://app.betaflight.com/)
+2. [Blackbox Explorer](https://blackbox.betaflight.com/)
+3. [AM32](https://am32.ca/)
+4. [ESC Configurator](https://esc-configurator.com/)
+5. [OX32](https://ox32.oxbot.cn/)
+6. [ELRS](https://www.expresslrs.org/) | [中国镜像](https://elrs.bayckrc.com/)
+
+## 其他资源
+
+- [FPV工具箱](https://mklb.xyz/)
