@@ -1,0 +1,241 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F7X2 (F722) 2025.12.0-RC2 Oct 24 2025 / 21:27:10 (9c1a6bfab) MSP API: 1.47
+# config rev: c940ae8
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name AXISFLYINGF7PRO
+manufacturer_id AXFL
+mcu_id 004000183135510a37383635
+signature 
+
+# name: MANTA_5
+
+# feature
+feature -AIRMODE
+feature GPS
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+feature ESC_SENSOR
+
+# serial
+serial UART1 131073 115200 57600 0 115200
+serial UART2 64 115200 57600 0 115200
+serial UART3 2 115200 115200 0 115200
+serial UART4 1024 115200 57600 0 115200
+
+# beeper
+beeper -ON_USB
+
+# beacon
+beacon RX_SET
+
+# led
+led 0 13,15::C:8
+led 1 14,15::C:8
+led 2 15,15::C:8
+
+# aux
+aux 0 0 0 1700 2100 0 0
+aux 1 1 1 900 1300 0 0
+aux 2 3 2 1700 2100 1 0
+aux 3 3 3 1300 1700 1 0
+aux 4 6 3 1700 2100 1 0
+aux 5 6 2 900 1300 1 0
+aux 6 11 7 1700 2100 1 0
+aux 7 11 0 900 900 1 3
+aux 8 46 2 1700 2100 1 0
+aux 9 46 3 1700 2100 1 0
+aux 10 7 5 1700 2100 1 0
+aux 11 7 0 900 900 1 6
+aux 12 13 5 1700 2100 1 0
+aux 13 13 3 900 1300 1 0
+aux 14 19 1 1300 1700 0 0
+aux 15 28 6 1575 2100 0 0
+aux 16 35 2 900 1300 1 0
+aux 17 35 3 1300 1700 1 0
+aux 18 36 4 1700 2100 0 0
+aux 19 52 7 1625 2100 0 0
+
+# adjrange
+adjrange 0 0 2 900 1100 12 2 0 0
+adjrange 1 0 2 1400 1600 12 2 0 0
+adjrange 2 0 2 1900 2100 12 2 0 0
+
+# rxfail
+rxfail 3 s 1350
+
+# master
+set dyn_notch_count = 1
+set dyn_notch_q = 500
+set dyn_notch_min_hz = 150
+set acc_calibration = 5,3,12,1
+set align_mag = CW90
+set mag_align_yaw = 900
+set mag_hardware = NONE
+set fpv_mix_degrees = 30
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT300
+set motor_output_reordering = 3,2,1,0,4,5,6,7
+set failsafe_procedure = GPS-RESCUE
+set align_board_yaw = 90
+set bat_capacity = 600
+set vbat_max_cell_voltage = 450
+set yaw_motors_reversed = ON
+set small_angle = 180
+set gps_sbas_mode = AUTO
+set gps_ublox_use_galileo = ON
+set gps_set_home_point_once = ON
+set gps_rescue_allow_arming_without_fix = ON
+set pos_hold_without_mag = ON
+set pid_process_denom = 2
+set osd_vbat_pos = 2625
+set osd_link_quality_pos = 2305
+set osd_link_tx_power_pos = 3116
+set osd_rssi_dbm_pos = 2337
+set osd_tim_2_pos = 2049
+set osd_flymode_pos = 2081
+set osd_anti_gravity_pos = 545
+set osd_throttle_pos = 2686
+set osd_crosshairs_pos = 4408
+set osd_ah_pos = 2233
+set osd_mah_drawn_pos = 2632
+set osd_gps_speed_pos = 2649
+set osd_gps_lon_pos = 2058
+set osd_gps_lat_pos = 2074
+set osd_gps_sats_pos = 2098
+set osd_home_dir_pos = 2137
+set osd_home_dist_pos = 2110
+set osd_altitude_pos = 19055
+set osd_pidrate_profile_pos = 3081
+set osd_avg_cell_voltage_pos = 3334
+set osd_battery_usage_pos = 2656
+set osd_disarmed_pos = 2453
+set osd_nvario_pos = 2677
+set osd_core_temp_pos = 2639
+set osd_stick_overlay_left_pos = 2478
+set osd_stick_overlay_right_pos = 2494
+set osd_rate_profile_name_pos = 3086
+set osd_stat_bitmask = 137100
+set debug_mode = MULTI_GYRO_SCALED
+set craft_name = MANTA_5
+set pilot_name = Ryan Yim
+set ap_hover_throttle = 1337
+
+profile 0
+
+# profile 0
+set profile_name = MANTA5
+set anti_gravity_gain = 35
+set p_pitch = 51
+set i_pitch = 92
+set d_pitch = 41
+set f_pitch = 137
+set d_roll = 34
+set d_max_pitch = 48
+set feedforward_averaging = OFF
+set feedforward_smooth_factor = 25
+set feedforward_jitter_factor = 12
+set dyn_idle_min_rpm = 30
+set simplified_d_gain = 115
+set simplified_d_max_gain = 50
+set simplified_pitch_d_gain = 105
+set simplified_pitch_pi_gain = 110
+
+profile 1
+
+# profile 1
+set profile_name = MainTest
+set anti_gravity_gain = 35
+set p_pitch = 54
+set i_pitch = 97
+set d_pitch = 44
+set f_pitch = 144
+set p_roll = 47
+set i_roll = 84
+set d_roll = 37
+set f_roll = 125
+set p_yaw = 47
+set i_yaw = 84
+set f_yaw = 125
+set d_max_roll = 44
+set d_max_pitch = 52
+set feedforward_averaging = OFF
+set feedforward_smooth_factor = 25
+set feedforward_jitter_factor = 12
+set dyn_idle_min_rpm = 30
+set simplified_master_multiplier = 105
+set simplified_d_gain = 120
+set simplified_d_max_gain = 50
+set simplified_pitch_d_gain = 105
+set simplified_pitch_pi_gain = 110
+
+profile 2
+
+# profile 2
+set profile_name = Default
+
+profile 3
+
+# profile 3
+set profile_name = PDTest
+set anti_gravity_gain = 35
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set i_pitch = 0
+set f_pitch = 0
+set i_roll = 0
+set f_roll = 0
+set i_yaw = 0
+set f_yaw = 0
+set d_max_roll = 30
+set d_max_pitch = 34
+set feedforward_averaging = OFF
+set feedforward_smooth_factor = 25
+set feedforward_jitter_factor = 12
+set dyn_idle_min_rpm = 30
+set simplified_i_gain = 0
+set simplified_d_max_gain = 0
+set simplified_feedforward_gain = 0
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = 7-67
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = 7-55P57
+set roll_srate = 55
+set pitch_srate = 57
+set yaw_srate = 55
+
+rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = 20-67
+set roll_rc_rate = 20
+set pitch_rc_rate = 20
+set yaw_rc_rate = 20
+set roll_expo = 57
+set pitch_expo = 57
+set yaw_expo = 57
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
