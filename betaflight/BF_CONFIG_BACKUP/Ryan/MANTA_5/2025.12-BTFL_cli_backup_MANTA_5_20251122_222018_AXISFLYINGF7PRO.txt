@@ -1,9 +1,10 @@
 defaults nosave
 
+# diff all
 
 # version
-# Betaflight / STM32F7X2 (F722) 2025.12.0-RC2 Oct 24 2025 / 21:27:10 (9c1a6bfab) MSP API: 1.47
-# config rev: c940ae8
+# Betaflight / STM32F7X2 (F722) 2025.12.1 Dec 26 2025 / 09:14:49 (85d201376) MSP API: 1.47
+# config rev: 46f5576
 
 # start the command batch
 batch start
@@ -82,6 +83,7 @@ set align_mag = CW90
 set mag_align_yaw = 900
 set mag_hardware = NONE
 set fpv_mix_degrees = 30
+set blackbox_sample_rate = 1/2
 set dshot_bidir = ON
 set motor_pwm_protocol = DSHOT300
 set motor_output_reordering = 3,2,1,0,4,5,6,7
